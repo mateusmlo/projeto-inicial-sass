@@ -3,9 +3,14 @@ body {
   font-family: "Roboto Slab", serif;
 }
 
+//o css com media queries aninhados gera os códigos responsivos próximos de suas classes, evitando assim que tenhamos que lembrar quais regras substituir num arquivo de media-queries separado.
 .container {
   width: 940px;
   margin: 0 auto;
+    
+    @media #{$mq-mobile} {
+        width: 90%;
+    }
 }
 
 .titulo-secao {

@@ -2,8 +2,15 @@
 /** scss @imports **/
 /** dividir os arquivos scss um para cada parte do site ├® ├║til para projetos grandes, onde fica mais f├ícil a manuten├º├úo e mudan├ºas de alguma parte e evita perda de tempo as procurando num arquivo com tudo junto **/
 /** importar os arquivos de mixins e vari├íveis primeiro, pois o arquivo css ser├í gerado com base na ordem dos imports! Ou seja, n├úo ├® de forma ass├¡ncrona **/
-/** Sass **/
-/** mixins **/
+.destaque button, .plano button, .contato button {
+  -webkit-box-shadow: 0 2px 6.65px 0.35px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 2px 6.65px 0.35px rgba(0, 0, 0, 0.3); }
+
+.plataformas li, .social li a {
+  text-indent: -9999px;
+  overflow: hidden;
+  background-repeat: no-repeat; }
+
 /** podemos importar o reset como um arquivo .scss tamb├®m para termos todos os estilos da p├ígina em um ├║nico arquivo, que ser├í o compilado "estilos.css"; este ter├í os estilos da p├ígina e o reset juntos, o que diminui o n├║mero de requests ao server e acelera o loading do site **/
 /*! normalize.css v3.0.2 | MIT License | git.io/normalize */
 /**
@@ -370,6 +377,9 @@ body {
 .container {
   width: 940px;
   margin: 0 auto; }
+  @media (max-width: 950px) {
+    .container {
+      width: 90%; } }
 
 .titulo-secao {
   text-decoration: underline;
@@ -392,13 +402,21 @@ header {
   height: 90px;
   width: 100%;
   position: absolute; }
+  header .container {
+    position: relative; }
+  @media (max-width: 950px) {
+    header header {
+      height: auto; }
+    header .container {
+      position: static; }
+    header h1 {
+      max-width: 50%;
+      margin: 0 auto; }
+      header h1 img {
+        max-width: 100%;
+        margin: .5em auto;
+        display: block; } }
 
-header .container {
-  position: relative; }
-
-/* no Sass podemos aninhar (nesting) elementos com seus respectivos elementos filhos sem a necessidade de usar o seletor de classe novamente. Como em .menu-principal, sem Sass seria necess├írio usar a classe em todos os elementos filhos como ul, li e a */
-/* caso mudemos a classe de nome no HTML, basta apenas mudar o seletor uma vez, ao inv├®s de 4, como seria necess├írio no CSS comum. */
-/* usar com cautela o recurso de nesting, pois v├írias tags e seletores ficam atrelados e alterar algum deles no HTML ou incluir elementos demais afetar├í a performance */
 .menu-principal {
   position: absolute;
   right: 0;
@@ -412,8 +430,7 @@ header .container {
     width: 5em; }
   .menu-principal a {
     color: white;
-    text-decoration: none;
-    /* & em Sass significa "inherit", ao inv├®s de considerar como outro seletor (o que seria o caso e geraria um bug em que o CSS gerado ficaria com dois elementos "a"), ele herda os estilos de "a" por├®m com o pseudo-seletor :hover */ }
+    text-decoration: none; }
     .menu-principal a:hover {
       text-decoration: underline; }
 
@@ -446,8 +463,6 @@ header .container {
   font-size: 1.2em;
   -webkit-border-radius: 1.25em;
   border-radius: 1.25em;
-  -webkit-box-shadow: 0 2px 6.65px 0.35px rgba(0, 0, 0, 0.3);
-  box-shadow: 0 2px 6.65px 0.35px rgba(0, 0, 0, 0.3);
   font-weight: bold; }
 
 /** Sobre **/
@@ -476,9 +491,6 @@ header .container {
   display: inline-block;
   width: 50px;
   height: 60px;
-  text-indent: -9999px;
-  overflow: hidden;
-  background-repeat: no-repeat;
   background-position: center;
   margin: 1em 1.5em 0 0; }
 
@@ -547,8 +559,6 @@ header .container {
   font-size: 1.2em;
   -webkit-border-radius: 0.3em;
   border-radius: 0.3em;
-  -webkit-box-shadow: 0 2px 6.65px 0.35px rgba(0, 0, 0, 0.3);
-  box-shadow: 0 2px 6.65px 0.35px rgba(0, 0, 0, 0.3);
   margin-left: 2em; }
 
 .icone-check, .icone-x {
@@ -629,9 +639,7 @@ textarea {
   height: 38px;
   font-size: 1.2em;
   -webkit-border-radius: 0.3em;
-  border-radius: 0.3em;
-  -webkit-box-shadow: 0 2px 6.65px 0.35px rgba(0, 0, 0, 0.3);
-  box-shadow: 0 2px 6.65px 0.35px rgba(0, 0, 0, 0.3); }
+  border-radius: 0.3em; }
 
 /** Footer **/
 footer {
@@ -698,9 +706,6 @@ footer a {
   display: block;
   width: 55px;
   height: 55px;
-  text-indent: -9999px;
-  overflow: hidden;
-  background-repeat: no-repeat;
   margin-left: 1em; }
 
 .social a {
@@ -716,6 +721,27 @@ footer a {
 .social a[href*="instagram"] {
   background-image: url(../imagens/instagram.png); }
 
+/** media queries **/
+@media (max-width: 950px) {
+  .menu-principal {
+    position: static;
+    display: block;
+    text-align: center;
+    padding-top: auto; }
+
+  .menu-principal li {
+    margin: .4em; }
+
+  .destaque {
+    font-size: 14px;
+    height: 250px; }
+
+  .menu-principal,
+  .menu-principal li,
+  .post-destaque,
+  .posts-antigos,
+  form {
+    width: auto; } }
 /** o sass considera todo arquivo num @import como j├í possuindo a extens├úo .scss, sendo assim n├úo precisa us├í-la quando importar **/
 
 /*# sourceMappingURL=estilos.css.map */

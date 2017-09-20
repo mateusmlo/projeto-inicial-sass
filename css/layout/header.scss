@@ -5,15 +5,32 @@ header {
   height: 90px;
   width: 100%;
   position: absolute;
-}
+    
+.container {position: relative;}
+    
+    //esse estilo de inserir a variável da media-query se chama interpolation, este processo insere uma string (o valor de $mq-mobile) dentro de um valor (@media). Caso inserir pelo modo normal, apenas com max-width: $mq-mobile, irá gerar erro na compilação, pois a variável em si já contém este valor, que seria duplicado.
+    @media #{$mq-mobile} {
+        header {height: auto;}
+        .container{position: static;}
+        
+        h1 {
+		max-width: 50%;
+		margin: 0 auto;
+            
+            img {
+            max-width: 100%;
+            margin: .5em auto;
+            display: block;
+            }
+	    }//fim h1
+    }//fim media-query
+}//fim header
 
-header .container {
-  position: relative;
-}
+// no Sass podemos aninhar (nesting) elementos com seus respectivos elementos filhos sem a necessidade de usar o seletor de classe novamente. Como em .menu-principal, sem Sass seria necessário usar a classe em todos os elementos filhos como ul, li e a
 
-/* no Sass podemos aninhar (nesting) elementos com seus respectivos elementos filhos sem a necessidade de usar o seletor de classe novamente. Como em .menu-principal, sem Sass seria necessário usar a classe em todos os elementos filhos como ul, li e a */
-/* caso mudemos a classe de nome no HTML, basta apenas mudar o seletor uma vez, ao invés de 4, como seria necessário no CSS comum. */
-/* usar com cautela o recurso de nesting, pois várias tags e seletores ficam atrelados e alterar algum deles no HTML ou incluir elementos demais afetará a performance */
+// caso mudemos a classe de nome no HTML, basta apenas mudar o seletor uma vez, ao invés de 4, como seria necessário no CSS comum.
+
+// usar com cautela o recurso de nesting, pois várias tags e seletores ficam atrelados e alterar algum deles no HTML ou incluir elementos demais afetará a performance
 .menu-principal {
   position: absolute;
   right: 0;
@@ -31,7 +48,7 @@ header .container {
     a {
       color: white;
       text-decoration: none;
-        /* & em Sass significa "inherit", ao invés de considerar como outro seletor (o que seria o caso e geraria um bug em que o CSS gerado ficaria com dois elementos "a"), ele herda os estilos de "a" porém com o pseudo-seletor :hover */
         &:hover {text-decoration: underline;}
+        // & em Sass significa "inherit", ao invés de considerar como outro seletor (o que seria o caso e geraria um bug em que o CSS gerado ficaria com dois elementos "a"), ele herda os estilos de "a" porém com o pseudo-seletor :hover
     }
 }
