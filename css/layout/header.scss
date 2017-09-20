@@ -1,0 +1,37 @@
+/** Header **/
+header {
+  border-top: 5px solid $cor-padrao;
+  background: rgba($cor-auxiliar, 0.8);
+  height: 90px;
+  width: 100%;
+  position: absolute;
+}
+
+header .container {
+  position: relative;
+}
+
+/* no Sass podemos aninhar (nesting) elementos com seus respectivos elementos filhos sem a necessidade de usar o seletor de classe novamente. Como em .menu-principal, sem Sass seria necessário usar a classe em todos os elementos filhos como ul, li e a */
+/* caso mudemos a classe de nome no HTML, basta apenas mudar o seletor uma vez, ao invés de 4, como seria necessário no CSS comum. */
+/* usar com cautela o recurso de nesting, pois várias tags e seletores ficam atrelados e alterar algum deles no HTML ou incluir elementos demais afetará a performance */
+.menu-principal {
+  position: absolute;
+  right: 0;
+  top: -.5em;
+  font-size: 1.2em;
+  font-weight: lighter;
+
+    ul {padding-left: 0;}
+
+    li {
+      display: inline-block;
+      width: 5em;
+    }
+
+    a {
+      color: white;
+      text-decoration: none;
+        /* & em Sass significa "inherit", ao invés de considerar como outro seletor (o que seria o caso e geraria um bug em que o CSS gerado ficaria com dois elementos "a"), ele herda os estilos de "a" porém com o pseudo-seletor :hover */
+        &:hover {text-decoration: underline;}
+    }
+}

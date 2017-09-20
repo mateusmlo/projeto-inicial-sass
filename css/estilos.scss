@@ -1,0 +1,20 @@
+/** scss @imports **/
+/** dividir os arquivos scss um para cada parte do site é útil para projetos grandes, onde fica mais fácil a manutenção e mudanças de alguma parte e evita perda de tempo as procurando num arquivo com tudo junto **/
+
+/** importar os arquivos de mixins e variáveis primeiro, pois o arquivo css será gerado com base na ordem dos imports! Ou seja, não é de forma assíncrona **/
+@import "helpers/variaveis";
+@import "helpers/mixins";
+
+/** podemos importar o reset como um arquivo .scss também para termos todos os estilos da página em um único arquivo, que será o compilado "estilos.css"; este terá os estilos da página e o reset juntos, o que diminui o número de requests ao server e acelera o loading do site **/
+@import "base/normalize";
+
+@import "layout/geral";
+@import "layout/header";
+@import "layout/destaque";
+@import "layout/sobre";
+@import "layout/planos";
+@import "layout/blog";
+@import "layout/contato";
+@import "layout/footer";
+
+/** o sass considera todo arquivo num @import como já possuindo a extensão .scss, sendo assim não precisa usá-la quando importar **/
