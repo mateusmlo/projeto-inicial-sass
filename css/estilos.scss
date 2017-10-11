@@ -1,7 +1,10 @@
 /** scss @imports **/
 /** dividir os arquivos scss um para cada parte do site é útil para projetos grandes, onde fica mais fácil a manutenção e mudanças de alguma parte e evita perda de tempo as procurando num arquivo com tudo junto **/
-
 /** importar os arquivos de mixins e variáveis primeiro, pois o arquivo css será gerado com base na ordem dos imports! Ou seja, não é de forma assíncrona **/
+
+$sprite-spacing: 5px; //as imagens no sprite gerado pelo compass ficam muito coladas sem esta variável antes
+@import "sprite/*.png"; //faz com que o compass importe qualquer imagem com a extensão na pasta e os junte numa única imagem, formando assim um sprite de forma rápida na pasta de imagens principal. Para alterar o sprite basta adicionar as imagens desejadas e salvar de novo este arquivo para que seja gerado o sprite atualizado (ele inclusive deleta o antigo)
+@include all-sprite-sprites(true); //elimina a necessidade de alterar nomes de arquivo e propriedades do sprite nos arquivos do projeto. O parâmetro (true) fará com que o mixin pegue a altura e largura individual de cada icon no sprite. Cada parte do sprite terá um nome de classe que deverá ser usado no HTML (exemplo: foram geradas aqui as classes sprite-icone-x e sprite-icone-check)
 @import "helpers/variaveis";
 @import "helpers/mixins";
 

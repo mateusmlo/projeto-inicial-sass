@@ -30,6 +30,6 @@
   padding: .6em;
   font-size: 1.2em;
   @include borda-arredondada(1.25em);
-  @include single-box-shadow; //código do compass
+  @include box-shadow(black 0 2px 6.65px); //include do compass com valores diferentes dos padrões, apenas os vendor-prefixes serão adicionados (-moz- e -o-)
   font-weight: bold;
 }
